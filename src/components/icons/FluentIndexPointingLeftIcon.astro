@@ -1,0 +1,12 @@
+---
+interface Props {
+  class?: string
+}
+const props = Astro.props
+---
+
+<img
+  src="/fluent-emoji/pointing-left.png"
+  alt="Backhand Index Pointing Left Light Skin Tone"
+  class={props.class ?? "w-6 h-6"}
+/>

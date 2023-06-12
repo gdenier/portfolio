@@ -1,0 +1,84 @@
+---
+import ButtonLink from "./ButtonLink.astro"
+import SectionTitle from "./SectionTitle.astro"
+import ArrowDownIcon from "./icons/ArrowDownIcon.astro"
+import FluentIndexPointingLeftIcon from "./icons/FluentIndexPointingLeftIcon.astro"
+import FluentGlowingStarIcon from "./icons/FluentGlowingStarIcon.astro"
+---
+
+<div
+  class="relative flex min-h-[100dvh] flex-col items-center justify-between pb-6 pt-[2.7rem] md:pt-[4.7rem]"
+>
+  <div class="absolute inset-0 -z-10">
+    <div
+      class="absolute -z-10 h-[2500px] w-[2500px] -translate-x-[10dvw] bg-[rgba(255,255,255,0.8)]"
+    >
+      background
+    </div>
+    <img
+      src="/blob-1.svg"
+      class="absolute -z-20 h-[80dvh] min-h-[300px] w-[80dvw] min-w-[300px] -translate-x-[10dvw] -translate-y-[5dvh] blur-3xl"
+    />
+    <img
+      src="/blob-2.svg"
+      class="absolute inset-full -z-20 h-[50dvh] min-h-[300px] w-[55dvw] min-w-[300px] -translate-x-[40dvw] -translate-y-[45dvh] blur-3xl"
+    />
+  </div>
+  <div
+    class="container grid grid-cols-1 gap-8 sm:my-auto sm:gap-24 md:grid-cols-[1.05fr_0.8fr]"
+  >
+    <div class="row-start-2 space-y-12 md:row-start-1">
+      <div class="space-y-6">
+        <div>
+          <h2 class="text-4xl text-black-70">
+            Guillaume Denier<span class="font-gradient">.</span>
+          </h2>
+          <h1 class="letter text-5xl font-bold tracking-wide">
+            Développeur Full Stack
+          </h1>
+        </div>
+        <p class="italic text-black-70">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor etiam
+          lacus congue lacus, enim ultrices consequat. Pharetra vel varius et
+          laoreet ultrices.
+        </p>
+        <ButtonLink href="#">
+          Télécharger mon CV <FluentIndexPointingLeftIcon class="h-6 w-6" />
+        </ButtonLink>
+      </div>
+      <div class="space-y-6">
+        <SectionTitle>
+          Mes techs favorites <FluentGlowingStarIcon class="h-6 w-6" />
+        </SectionTitle>
+        <div class="flex gap-6 sm:gap-12">
+          {
+            (await Astro.glob("../content/techs/*.md")).map((tech) => (
+              <div class="rounded bg-white p-3">
+                <p class="sr-only">{tech.frontmatter.name}</p>
+                <div class="flex h-full w-6 items-center justify-center">
+                  <img src={tech.frontmatter.icon} />
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+    <!-- temporary bg waiting for good photo -->
+    <div
+      class="hidden h-full w-full items-center justify-center rounded bg-[linear-gradient(134.17deg,rgba(253,132,31,0.4)_5.04%,rgba(156,44,119,0.4)_94.09%)] shadow sm:flex"
+    >
+      <img src="/unicorn_3d.png" />
+    </div>
+  </div>
+  <ArrowDownIcon />
+</div>
+
+<style>
+  .font-gradient {
+    background: linear-gradient(134.17deg, #fd841f 5.04%, #9c2c77 94.09%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+</style>

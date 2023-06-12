@@ -1,0 +1,12 @@
+---
+interface Props {
+  class?: string
+}
+const props = Astro.props
+---
+
+<img
+  src="/fluent-emoji/glowing-star.png"
+  alt="Glowing Star"
+  class={props.class ?? "w-6 h-6"}
+/>
