@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro"
+
+interface JobFrontmatter {
+  draft: boolean
+  company: {
+    name: string
+    form: string
+  }
+  projects: { name: string }[]
+}
+
+interface Props {
+  frontmatter: JobFrontmatter
+}
+const { frontmatter } = Astro.props
+---
+
+<Layout title={frontmatter.company.name}>
+  <h1>{frontmatter.company.name}</h1>
+</Layout>
