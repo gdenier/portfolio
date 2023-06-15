@@ -13,8 +13,8 @@ const menu = [
 ---
 
 <!-- make bg when scroll is not on top -->
-<div class="fixed top-0 z-10 w-screen shadow">
-  <div class="container flex justify-between bg-white py-2 md:py-6">
+<div id="menu" class="fixed top-0 z-40 w-[100dvw] bg-white shadow">
+  <div class="container flex justify-between py-2 md:py-6">
     <a href="/"><Logo /></a>
     <nav class="hidden md:block">
       <ul class="flex gap-6">
@@ -32,7 +32,7 @@ const menu = [
 </div>
 <div
   data-mobile-menu="closed"
-  class="absolute inset-0 z-30 h-screen transition-transform duration-300 ease-in-out data-[mobile-menu=closed]:-translate-x-full"
+  class="fixed inset-0 z-50 h-screen transition-transform duration-300 ease-in-out data-[mobile-menu=closed]:-translate-x-full"
 >
   <button data-menu-close-button class="absolute right-0 top-0 mx-8 my-6"
     ><CloseIcon /></button
@@ -51,6 +51,7 @@ const menu = [
 </div>
 
 <script>
+  const menu = document.querySelector("#menu")
   const mobileMenu = document.querySelector("[data-mobile-menu]")
   const interfaceElement = []
   interfaceElement.push(document.querySelector("[data-menu-button]"))
@@ -60,6 +61,8 @@ const menu = [
   )
   interfaceElement.forEach((element) =>
     element?.addEventListener("click", () => {
+      console.log("test")
+
       const state = mobileMenu?.getAttribute("data-mobile-menu")
       mobileMenu?.setAttribute(
         "data-mobile-menu",
@@ -67,4 +70,34 @@ const menu = [
       )
     })
   )
+
+  // let lastKnownScrollPosition = 0
+  // let ticking = false
+
+  // function doSomething(scrollPos: number) {
+  //   if (scrollPos !== 0) {
+  //     menu?.classList.add("bg-white")
+  //     menu?.classList.add("shadow")
+  //     return
+  //   }
+  //   menu?.classList.remove("bg-white")
+  //   menu?.classList.remove("shadow")
+  // }
+
+  // document.addEventListener(
+  //   "scroll",
+  //   (event) => {
+  //     lastKnownScrollPosition = window.scrollY
+
+  //     if (!ticking) {
+  //       window.requestAnimationFrame(() => {
+  //         doSomething(lastKnownScrollPosition)
+  //         ticking = false
+  //       })
+
+  //       ticking = true
+  //     }
+  //   },
+  //   { capture: true, passive: true }
+  // )
 </script>

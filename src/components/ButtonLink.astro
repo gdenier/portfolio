@@ -1,10 +1,14 @@
 ---
 interface Props {
   href: string
+  class?: string
 }
-const { href } = Astro.props
+const props = Astro.props
 ---
 
-<a href={href} class="flex w-fit gap-3 rounded border border-black px-6 py-2">
+<a
+  href={props.href}
+  class={`flex w-fit gap-3 rounded border border-black px-6 py-2 justify-center ${props.class}`}
+>
   <slot />
 </a>
