@@ -28,14 +28,19 @@ import FluentGlowingStarIcon from "./icons/FluentGlowingStarIcon.astro"
           <h2 class="mb-2 text-2xl text-black-70 md:text-4xl">
             Guillaume Denier<span class="font-gradient">.</span>
           </h2>
-          <h1
-            class="relative z-10 text-3xl font-bold md:text-4xl lg:text-[2.5rem] xl:text-5xl"
+          <div
+            class="relative -left-3 z-10 w-full overflow-hidden rounded px-3 py-1"
           >
             <span
-              class="absolute inset-y-0 -left-3 -z-10 my-auto rounded bg-white py-6 opacity-100"
+              id="title-highlight"
+              class="absolute inset-y-0 -left-[calc(100%_+_8rem)] -z-10 block w-[calc(100%_+_8rem)] bg-white py-1"
             ></span>
-            Développeur Full Stack
-          </h1>
+            <h1
+              class="text-3xl font-bold md:text-4xl lg:text-[2.5rem] xl:text-5xl"
+            >
+              Développeur Full Stack
+            </h1>
+          </div>
         </div>
         <p class="italic text-black-70">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor etiam
@@ -117,24 +122,18 @@ import FluentGlowingStarIcon from "./icons/FluentGlowingStarIcon.astro"
   } */
 
   .animate-width {
-    transition: width 1s ease-in-out 500ms;
-    width: calc(100% + 8rem);
-  }
-
-  h1 > span {
-    width: 0%;
+    transition: transform 1s ease-in-out 500ms;
+    transform: translateX(calc(99% + 5px));
   }
 </style>
 
 <script>
-  // const title = document.querySelector("h1 > span")
-  // const observer = new IntersectionObserver((entries) => {
-  //   if (window.innerWidth < 768) return
-  //   if (entries[0].intersectionRatio <= 0) {
-  //     return entries[0].target.classList.remove("animate-width")
-  //   }
-
-  //   entries[0].target.classList.add("animate-width")
-  // })
-  // if (title) observer.observe(title)
+  const title = document.getElementById("title-highlight")
+  console.log(title)
+  const observer = new IntersectionObserver((entries) => {
+    console.log(window.innerWidth, entries[0].intersectionRatio)
+    if (window.innerWidth < 768) return
+    entries[0].target.classList.toggle("animate-width")
+  })
+  if (title) observer.observe(title)
 </script>
