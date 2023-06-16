@@ -103,7 +103,7 @@ import FluentGlowingStarIcon from "./icons/FluentGlowingStarIcon.astro"
   } */
   /* bg-[linear-gradient(134.17deg,rgba(253,132,31,0.4)_5.04%,rgba(156,44,119,0.4)_94.09%)] */
 
-  #blob-1 {
+  /* #blob-1 {
     animation-name: turn-around-right;
     animation-duration: 35s;
     animation-timing-function: linear;
@@ -114,7 +114,7 @@ import FluentGlowingStarIcon from "./icons/FluentGlowingStarIcon.astro"
     animation-duration: 35s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
-  }
+  } */
 
   .animate-width {
     transition: width 1s ease-in-out 500ms;
@@ -127,14 +127,14 @@ import FluentGlowingStarIcon from "./icons/FluentGlowingStarIcon.astro"
 </style>
 
 <script>
-  const title = document.querySelector("h1 > span")
-  const observer = new IntersectionObserver((entries) => {
-    if (window.innerWidth < 768) return
-    if (entries[0].intersectionRatio <= 0) {
-      return entries[0].target.classList.remove("animate-width")
-    }
+  // const title = document.querySelector("h1 > span")
+  // const observer = new IntersectionObserver((entries) => {
+  //   if (window.innerWidth < 768) return
+  //   if (entries[0].intersectionRatio <= 0) {
+  //     return entries[0].target.classList.remove("animate-width")
+  //   }
 
-    entries[0].target.classList.add("animate-width")
-  })
-  if (title) observer.observe(title)
+  //   entries[0].target.classList.add("animate-width")
+  // })
+  // if (title) observer.observe(title)
 </script>
