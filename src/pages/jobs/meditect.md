@@ -1,13 +1,8 @@
 ---
 draft: true
 layout: ../../layouts/JobLayout.astro
-company: {
-  name: Meditect,
-  form: Full remote
-}
-projects: {
-  medibase:{
-
-  },
-}
+image: /jobs/meditect.png
+company: { name: Meditect, form: Full remote }
+job-name: Développeur full stack
+period: { start: 2021 }
 ---

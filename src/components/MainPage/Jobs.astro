@@ -1,0 +1,39 @@
+---
+import SectionTitle from "../SectionTitle.astro"
+import FluentBriefcaseIcon from "../icons/FluentBriefcaseIcon.astro"
+
+const jobs = (await Astro.glob("../../pages/jobs/*.md"))
+  .filter((job) => !!job.frontmatter.period)
+  .sort((a, b) => {
+    if (!a.frontmatter.period.end) return -1
+    if (!b.frontmatter.period.end) return 1
+    return b.frontmatter.period.start - a.frontmatter.period.end
+  })
+  .reverse()
+---
+
+<div class="container py-6 md:py-12">
+  <SectionTitle>
+    Mes expériences <FluentBriefcaseIcon class="h-6 w-6" />
+  </SectionTitle>
+  <div
+    class="grid w-full grid-cols-2 place-items-center gap-4 pt-6 sm:flex sm:justify-between"
+  >
+    {
+      jobs.map((job) => (
+        <div class="flex h-full flex-col items-stretch overflow-hidden">
+          <img
+            src={job.frontmatter.image}
+            class="h-20 object-contain md:h-24"
+          />
+          <p class="sr-only">{job.frontmatter.company.name}</p>
+          <p class="text-center italic text-black-70">
+            {`${job.frontmatter.period.start} - ${
+              job.frontmatter.period.end ?? "Maintenant"
+            }`}
+          </p>
+        </div>
+      ))
+    }
+  </div>
+</div>

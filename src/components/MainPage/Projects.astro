@@ -1,0 +1,22 @@
+---
+import ButtonLink from "../ButtonLink.astro"
+import SectionTitle from "../SectionTitle.astro"
+import FluentIndexPointingLeftIcon from "../icons/FluentIndexPointingLeftIcon.astro"
+import FluentLaptopIcon from "../icons/FluentLaptopIcon.astro"
+import Project, { ProjectFrontmatter } from "./Project.astro"
+
+const projects = await Astro.glob("../../pages/projects/*.md")
+---
+
+<div class="container py-6 md:py-12">
+  <SectionTitle>
+    Mes projets <FluentLaptopIcon class="h-6 w-6" />
+  </SectionTitle>
+  <div class="grid w-full place-items-center gap-4 pt-6 lg:grid-cols-2">
+    {
+      projects.map((project) => (
+        <Project project={project.frontmatter as ProjectFrontmatter} />
+      ))
+    }
+  </div>
+</div>

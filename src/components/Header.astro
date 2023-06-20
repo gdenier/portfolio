@@ -50,6 +50,7 @@ const menu = [
 </div>
 
 <script is:inline>
+  console.log(process.env)
   function toggleMenu() {
     const mobileMenu = document.querySelector("[data-mobile-menu]")
     const state = mobileMenu?.getAttribute("data-mobile-menu")

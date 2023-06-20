@@ -1,0 +1,59 @@
+---
+import ButtonLink from "../ButtonLink.astro"
+import FluentIndexPointingLeftIcon from "../icons/FluentIndexPointingLeftIcon.astro"
+export interface ProjectFrontmatter {
+  meta: {
+    name: string
+    side: boolean
+    cover: string
+  }
+  description: string
+  techs: string[]
+  links: { github?: string; demo?: string }
+}
+
+interface Props {
+  project: ProjectFrontmatter
+}
+const { project } = Astro.props
+---
+
+<div
+  class="h-full w-full rounded bg-[linear-gradient(134.17deg,#FD841F_5.04%,#9C2C77_94.09%)] p-[1px]"
+>
+  <div
+    class="flex h-full w-full flex-col justify-between gap-4 overflow-hidden rounded-[9px] bg-white p-6 sm:max-h-96 sm:flex-row"
+  >
+    <img
+      src={project.meta.cover}
+      class="h-36 w-full rounded object-cover sm:h-auto sm:w-2/5"
+    />
+    <div class="flex flex-col gap-6">
+      <h3 class="text-2xl">{project.meta.name}</h3>
+      <p class="line-clamp-5 max-w-full text-ellipsis italic text-black-70">
+        {project.description}
+        {project.description}
+        {project.description}
+        {project.description}
+        {project.description}
+      </p>
+      <div class="flex gap-2">
+        {project.techs.map((tech: string) => <p>{tech}</p>)}
+      </div>
+      <div class="flex gap-2">
+        {
+          project.links.github && (
+            <ButtonLink href={project.links.github}>github</ButtonLink>
+          )
+        }
+        {
+          project.links.demo && (
+            <ButtonLink href={project.links.demo} class="w-full">
+              Démo <FluentIndexPointingLeftIcon class="h-6 w-6" />
+            </ButtonLink>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</div>

@@ -9,7 +9,7 @@ module.exports = {
         center: true,
         padding: "2rem",
         screens: {
-          "2xl": "1400px",
+          "2xl": "1200px",
         },
       },
       fontFamily: {
@@ -22,7 +22,7 @@ module.exports = {
         violet: "rgba(156, 44, 119, 1)",
         black: "rgba(19, 25, 27, 1)",
         "black-70": "rgba(90, 95, 96, 1)",
-        gradient: "linear-gradient(134.17deg, #FD841F 5.04%, #9C2C77 94.09%);",
+        gradient: "linear-gradient(134.17deg, #FD841F 5.04%, #9C2C77 94.09%)",
       },
       boxShadow: {
         DEFAULT: "2px 2px 20px rgba(0, 0, 0, 0.05)",
