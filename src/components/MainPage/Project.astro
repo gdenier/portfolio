@@ -1,6 +1,8 @@
 ---
 import ButtonLink from "../ButtonLink.astro"
+import IconButtonLink from "../IconButtonLink.astro"
 import FluentIndexPointingLeftIcon from "../icons/FluentIndexPointingLeftIcon.astro"
+import GithubIcon from "../icons/GithubIcon.astro"
 export interface ProjectFrontmatter {
   meta: {
     name: string
@@ -41,18 +43,19 @@ const { project } = Astro.props
         {project.techs.map((tech: string) => <p>{tech}</p>)}
       </div>
       <div class="flex gap-2">
-        {
-          project.links.github && (
-            <ButtonLink href={project.links.github}>github</ButtonLink>
-          )
-        }
-        {
-          project.links.demo && (
-            <ButtonLink href={project.links.demo} class="w-full">
-              Démo <FluentIndexPointingLeftIcon class="h-6 w-6" />
-            </ButtonLink>
-          )
-        }
+        <IconButtonLink
+          href={project.links.github}
+          disabled={!project.links.github}
+        >
+          <GithubIcon class="h-6 w-6" />
+        </IconButtonLink>
+        <ButtonLink
+          href={project.links.demo}
+          class="w-full"
+          disabled={!project.links.demo}
+        >
+          Démo <FluentIndexPointingLeftIcon class="h-6 w-6" />
+        </ButtonLink>
       </div>
     </div>
   </div>

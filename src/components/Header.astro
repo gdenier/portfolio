@@ -50,7 +50,6 @@ const menu = [
 </div>
 
 <script is:inline>
-  console.log(process.env)
   function toggleMenu() {
     const mobileMenu = document.querySelector("[data-mobile-menu]")
     const state = mobileMenu?.getAttribute("data-mobile-menu")
@@ -60,8 +59,8 @@ const menu = [
     )
   }
 
-  document.onscroll = (e) => {
-    const menu = document.getElementById("menu")
+  const menu = document.getElementById("menu")
+  document.addEventListener("scroll", () => {
     const scrollPos = window.scrollY
     if (scrollPos !== 0) {
       menu?.classList.add("bg-white")
@@ -70,5 +69,5 @@ const menu = [
     }
     menu?.classList.remove("bg-white")
     menu?.classList.remove("shadow")
-  }
+  })
 </script>

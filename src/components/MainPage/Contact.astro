@@ -1,0 +1,48 @@
+---
+import ButtonLink from "../ButtonLink.astro"
+import LinkedinIcon from "../icons/LinkedinIcon.astro"
+import GithubIcon from "../icons/GithubIcon.astro"
+import MailIcon from "../icons/MailIcon.astro"
+import IconButtonLink from "../IconButtonLink.astro"
+import Map from "./Map.astro"
+
+const links = {
+  linkedin: "",
+  github: "",
+  email: "",
+}
+---
+
+<div class="container py-6 md:py-12">
+  <div
+    class="flex w-full flex-col justify-between gap-4 pb-4 sm:flex-row sm:items-center"
+  >
+    <div>
+      <p class="text-black-70">Prêt.e.s à travailler ensemble ?</p>
+      <h2 class="text-3xl font-bold md:text-4xl lg:text-[2.5rem] xl:text-5xl">
+        Contactez-moi<span class="font-gradient">.</span>
+      </h2>
+    </div>
+    <div class="flex gap-6">
+      <IconButtonLink href={links.linkedin}>
+        <LinkedinIcon class="h-6 w-6" />
+      </IconButtonLink>
+      <IconButtonLink href={links.github}>
+        <GithubIcon class="h-6 w-6" />
+      </IconButtonLink>
+      <IconButtonLink href={`mailto:${links.email}`}>
+        <MailIcon class="h-6 w-6" />
+      </IconButtonLink>
+    </div>
+  </div>
+  <Map />
+</div>
+
+<style>
+  .font-gradient {
+    background: linear-gradient(134.17deg, #fd841f 5.04%, #9c2c77 94.09%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+</style>
