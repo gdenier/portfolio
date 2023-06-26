@@ -9,8 +9,8 @@ meta:
   }
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dolor etiam lacus congue lacus, enim ultrices consequat. Pharetra vel varius et laoreet ultrices.
 techs:
-  - nextjs
-  - html
-  - css
+  - Next.js
+  - HTML
+  - CSS
 links: { github: "", demo: "" }
 ---

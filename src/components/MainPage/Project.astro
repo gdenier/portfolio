@@ -3,6 +3,7 @@ import ButtonLink from "../ButtonLink.astro"
 import IconButtonLink from "../IconButtonLink.astro"
 import FluentIndexPointingLeftIcon from "../icons/FluentIndexPointingLeftIcon.astro"
 import GithubIcon from "../icons/GithubIcon.astro"
+import Tech, { TechFrontmatter } from "./Tech.astro"
 export interface ProjectFrontmatter {
   meta: {
     name: string
@@ -18,6 +19,15 @@ interface Props {
   project: ProjectFrontmatter
 }
 const { project } = Astro.props
+
+const techFiles = await Astro.glob("../../content/techs/*.md")
+const techs = project.techs
+  .map((tech) => {
+    return techFiles.find((techFile) => {
+      return techFile?.frontmatter?.name === tech
+    })
+  })
+  .filter(Boolean)
 ---
 
 <div
@@ -34,13 +44,13 @@ const { project } = Astro.props
       <h3 class="text-2xl">{project.meta.name}</h3>
       <p class="line-clamp-5 max-w-full text-ellipsis italic text-black-70">
         {project.description}
-        {project.description}
-        {project.description}
-        {project.description}
-        {project.description}
       </p>
       <div class="flex gap-2">
-        {project.techs.map((tech: string) => <p>{tech}</p>)}
+        {
+          techs.map((tech) => (
+            <Tech tech={tech?.frontmatter as TechFrontmatter} />
+          ))
+        }
       </div>
       <div class="flex gap-2">
         <IconButtonLink
