@@ -12,5 +12,5 @@ techs:
   - Next.js
   - HTML
   - CSS
-links: { github: "", demo: "" }
+links: { github: "https://github.com/gdenier/lift", demo: "" }
 ---
