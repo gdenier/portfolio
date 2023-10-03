@@ -10,7 +10,7 @@ const techs = (await Astro.glob("../../content/techs/*.md")).sort(
   (a, b) => a.frontmatter.order - b.frontmatter.order
 )
 
-const cvLink = ""
+const cvLink = "CV-DENIER-2023.pdf"
 ---
 
 <div
@@ -57,7 +57,12 @@ const cvLink = ""
         </p>
         {
           cvLink ? (
-            <ButtonLink href={cvLink} class="w-full md:w-fit">
+            <ButtonLink
+              href={cvLink}
+              class="w-full md:w-fit"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Télécharger mon CV <FluentIndexPointingLeftIcon class="h-6 w-6" />
             </ButtonLink>
           ) : null
